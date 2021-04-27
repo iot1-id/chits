@@ -1,0 +1,132 @@
+$base-spacing-unit: 24px;
+$half-spacing-unit: $base-spacing-unit / 2;
+
+$color-alpha: #1772FF;
+$color-form-highlight: #EEEEEE;
+
+li{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+.btn-grad1 {background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA  51%, #77A1D3  100%)}
+.btn-grad1 {
+margin: 10px;
+padding: 15px 15px;
+text-align: center;
+text-transform: uppercase;
+transition: 0.5s;
+background-size: 200% auto;
+color: white;            
+box-shadow: 0 0 20px #eee;
+border-radius: 10px;
+display: block;
+ min-width: 50%; 
+ justify-content: center;
+ margin: auto;
+}
+
+
+.btn-grad1:hover {
+background-position: right center; /* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}
+    
+.btn-grad3 {background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA  51%, #77A1D3  100%)}
+.btn-grad3 {
+margin: 5px;
+padding: 5px 5px;
+text-align: center;
+text-transform: uppercase;
+transition: 0.5s;
+background-size: 100% auto;
+color: white;            
+box-shadow: 0 0 20px #eee;
+border-radius: 10px;
+// display:inline-flexbox;
+ min-width:50%; 
+ justify-content: center;
+ margin: auto;
+//  float: right;
+}
+
+
+.btn-grad3:hover {
+background-position: right center; /* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}
+
+.table {
+	width:100%;
+	border:1px solid $color-form-highlight;
+}
+
+.table-header {
+	display:flex;
+	width:100%;
+	background:#000;
+	padding:($half-spacing-unit * 1.5) 0;
+}
+
+.table-row {
+	display:flex;
+	width:100%;
+	padding:($half-spacing-unit * 1.25) 0;
+	
+	
+	&:nth-of-type(odd) {
+		background:$color-form-highlight;
+	}
+}
+
+.table-data, .header__item {
+	flex: 1 1 20%;
+	text-align:left;
+    margin-left: 1vw;
+    // font-size: .8rem;
+}
+.header__item {
+	text-transform:uppercase;
+    white-space: nowrap;
+    // overflow:hidden;
+}
+.table-title{
+    font-weight: 700;
+	flex: 1 1 20%;
+	text-align:left;
+    margin-left: 1vw;
+}
+.table-header {
+	display:flex;
+	width:100%;
+	background:#000;
+	padding:($half-spacing-unit * 1.5) 0;
+}
+
+.btn-grad2 {background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA  51%, #77A1D3  100%)}
+.btn-grad2 {
+margin: 10px;
+padding: 2px 8px;
+text-align: center;
+// text-transform: uppercase;
+transition: 0.5s;
+background-size: 200% auto;
+font-size: 18px;
+color: white;            
+box-shadow: 0 0 50px #eee;
+border-radius: 10px;
+display: block;
+ min-width: 50%; 
+ justify-content: center;
+ margin: auto;
+}
+
+.btn-grad2:hover {
+background-position: right center; /* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}
