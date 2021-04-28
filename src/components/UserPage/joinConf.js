@@ -69,6 +69,7 @@ export default function JoinConf({ location }) {
                   })
               }
               alert("Group Joined succesfully");
+              history.push("/usercurrent")
             })
             .catch((e) => alert(e));
         }

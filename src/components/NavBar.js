@@ -29,6 +29,7 @@ function NavBar() {
               
               className="btn-grad2"
               onClick={() => {
+                
                 auth.signOut().catch((e) => {
                   console.error("Sign Out Error", e);
                 });

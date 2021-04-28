@@ -7,6 +7,7 @@ import firebase from "firebase"
 
 export default function Signup() {
   const emailRef = useRef()
+  const nameRef = useRef();
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
   const { signup } = useAuth()
@@ -29,8 +30,9 @@ export default function Signup() {
         db.collection("users").doc(result.user.uid).set({
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           uid: result.user.uid,
-          displayName: result.user.displayName,
-          type: "user"
+          displayName:nameRef.current.value,
+          type: "user",
+       
 
         })
       })
@@ -53,6 +55,10 @@ export default function Signup() {
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
+            <Form.Group id="Name">
+              <Form.Label>Full Name</Form.Label>
+              <Form.Control type="text" ref={nameRef} required />
+            </Form.Group>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />

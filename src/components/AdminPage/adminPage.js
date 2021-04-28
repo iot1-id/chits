@@ -11,6 +11,7 @@ import "./admin.css";
 import { db } from "../../firebase";
 import firebase from "firebase";
 import bg from "../../assets/bg4.jpg";
+import { Link, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -31,6 +32,7 @@ export default function AdminPage() {
   const [type, setType] = useState("");
   const [loader, setLoader] = useState(false);
   const [refID, setRefID] = useState("");
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,21 +42,27 @@ export default function AdminPage() {
       .doc(date.valueOf().toString())
       .set(
         {
+          status: "Inactive",
+          groupName: "",
           amount: amount,
           duration: duration,
           interval: interval,
           type: type,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           refId: date.valueOf().toString(),
-          status: "Inactive",
-          Winner: "Not yet decided"
+          winner: "Not yet decided",
+          startedAt: "",
+          Bid: amount,
+          lowestBidder: "",
+       
         },
         { merge: true }
       )
       .then(() => {
         // setRefID()
         setLoader(false);
-        alert("SMS group has been created");
+        history.push("/groupconf", {params: date.valueOf().toString() })
+        // alert(date.valueOf().toString());
       })
       .catch((error) => {
         alert(error.message);
@@ -179,99 +187,7 @@ export default function AdminPage() {
                 </div>
               </div>
             </div>
-            {/* <div className="selects"> */}
-
-            {/* <FormControl>
-              <Row className="rows">
-                <Col className="cols">Select interval</Col>
-                <Col>
-                  <Select
-                    value={interval}
-                    onChange={handleChange}
-                    required
-                    displayEmpty
-                    className={classes.selectEmpty}
-                    inputProps={{ "aria-label": "Without label" }}
-                  >
-                    <MenuItem value="" disabled>
-                      Intervals
-                    </MenuItem>
-                    <MenuItem value={"Weekly"}>Weekly</MenuItem>
-                    <MenuItem value={"Monthly"}>Monthly</MenuItem>
-                  </Select>
-                </Col>
-              </Row>
-
-              <Row className="rows">
-                <Col>Duration</Col>
-                <Col>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
-                    required
-                    displayEmpty
-                    className={classes.selectEmpty}
-                    inputProps={{ "aria-label": "Without label" }}
-                  >
-                    <MenuItem value="" disabled>
-                      Duration
-                    </MenuItem>
-                    <MenuItem value={6}>6</MenuItem>
-                    <MenuItem value={12}>12</MenuItem>
-                    <MenuItem value={24}>24</MenuItem>
-                    <MenuItem value={36}>36</MenuItem>
-                    <MenuItem value={48}>48</MenuItem>
-                    <MenuItem value={60}>60</MenuItem>
-                  </Select>
-                </Col>
-              </Row>
-              <Row className="rows">
-                <Col>Amount Per interval</Col>
-                <Col>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                    required
-                    displayEmpty
-                    className={classes.selectEmpty}
-                    inputProps={{ "aria-label": "Without label" }}
-                  >
-                    <MenuItem value="" disabled>
-                      amount
-                    </MenuItem>
-                    <MenuItem value={500}>500</MenuItem>
-                    <MenuItem value={1000}>1000</MenuItem>
-                    <MenuItem value={2000}>2000</MenuItem>
-                    <MenuItem value={4000}>4000</MenuItem>
-                    <MenuItem value={5000}>5000</MenuItem>
-                    {/* <MenuItem value={30}>Thirty</MenuItem> */}
-            {/* </Select>
-                </Col>
-              </Row> */}
-
-            {/* <Row className="rows">
-                <Col>Type</Col>
-                <Col>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={type}
-                    onChange={(e) => setType(e.target.value)}
-                    required
-                    displayEmpty
-                    className={classes.selectEmpty}
-                    inputProps={{ "aria-label": "Without label" }}
-                  >
-                    <MenuItem value="" disabled>
-                      Type
-                    </MenuItem>
-                    <MenuItem value={"Bidding"}>Bidding</MenuItem>
-                    <MenuItem value={"Lucky Draw"}>Lucky Draw</MenuItem>
-                  </Select>  */}
+           
             <Button
               className="btn-grad"
               type="submit"
@@ -283,11 +199,11 @@ export default function AdminPage() {
               </Row> */}
             {/* </FormControl> */}
 
-            <div className="hidden">
+            {/* <div className="hidden">
               {" "}
               Generated Group Referral Id: {}, Please share it with members to
               join.
-            </div>
+            </div> */}
           </Form>
           {/* </div> */}
         </Card.Body>

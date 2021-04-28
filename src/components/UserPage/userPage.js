@@ -21,8 +21,6 @@ export default function UserPage() {
 
   // };
 
-
- 
   console.log(auth);
   return (
     <div style={{ backgroundImage: `url(${bg})`, height: "100vh" }}>
@@ -96,23 +94,22 @@ export default function UserPage() {
                 <Form.Control
                   type="text"
                   placeholder="Enter Referral ID"
-                  onChange={(e) => setRefId(e.target.value)}
+                  onChange={(e) => setRefId((e.target.value).trim())}
                 />
                 {refId}
               </Col>
             </Row>
             <br />
-            <Row>
-              <button className="btn-grad1">
-                <Link
-                  to={{
-                    pathname: "/userconf",
-                    state: { id: refId },
-                  }}
-                >
-                  Join Group
-                </Link>
-              </button>
+            <Row align="center">
+              <Link
+                to={{
+                  pathname: "/userconf",
+                  state: { id: refId },
+                }}
+                className="btn-grad"
+              >
+                <button className="btn-grad1">Join Group</button>
+              </Link>
             </Row>
           </Card.Body>
         </Card>

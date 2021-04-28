@@ -16,32 +16,58 @@ import UserCurrentGroups from "./UserPage/userCurrentGroups";
 import firebase from "firebase";
 import { auth, db } from "../firebase";
 import { CodeOutlined } from "@material-ui/icons";
+import GroupConf from "./AdminPage/groupConf";
 
 function App() {
 
   const [userType, setUserType] = useState("user");
-  // useEffect(() => {
-  //   console.log(auth);
-  //   // db.collection("users")
-  //   //   .doc(auth.currentUser.uid)
-  //   //   .get()
-  //   //   .then((result) => {
-  //   //     console.log(result.data.type);
-  //   //     setUserType(result.data.type);
-  //   //   });
-  // }, []);
-  
+  const [id, setId] = useState("");
 
+
+  const getUserType = async () => {
+    await db
+      .collection("users")
+      .doc(auth.currentUser.uid)
+      .get()
+      .then((result) => {
+        // console.log(result.data().type);
+        setUserType(result.data().type);
+      });
+  };
+
+  useEffect(() => {
+    getUserType();
+    // if (auth !== undefined){
+    //   // setId(auth.currentUser.uid)
+    //   // console.log(id);
+    //   // db.collection("users")
+    //   //   .doc(id)
+    //   //   .get()
+    //   //   .then((result) => {
+    //   //     // console.log(result.data().type);
+    //   //     setUserType(result.data().type);
+    //   //   });
+    // }
+   
+  }, []);
+  
+  console.log(id)
   return (
     <Router>
       <AuthProvider>
         <Switch>
           {/* <PrivateRoute exact path="/" component={Dashboard} /> */}
-          <PrivateRoute exact path="/" component={adminPage} />
-          <Route exact path="/user" component={userPage} />
+          {userType === "user" ? (
+            <PrivateRoute exact path="/" component={userPage} />
+          ) : (
+            <PrivateRoute exact path="/" component={adminPage} />
+          )}
+
+          {/* <Route exact path="/user" component={userPage} /> */}
           <Route exact path="/userconf" component={JoinConf} />
           <Route exact path="/current" component={CurrentGroups} />
           <Route exact path="/usercurrent" component={UserCurrentGroups} />
+          <Route exact path="/groupconf" component={GroupConf} />
 
           <Container
             className="d-flex align-items-center justify-content-center"
