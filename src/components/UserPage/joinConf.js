@@ -6,17 +6,22 @@ import { Row, Col } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { auth, db } from "../../firebase";
 import bg from "../../assets/bg4.jpg";
+import firebase from "../../firebase"
 
 export default function JoinConf({ location }) {
   const [toggle, setToggle] = useState(false);
   const [smsGroup, setSmsGroup] = useState([]);
   const [id, setId] = useState(location.state.id);
   const [data, setData] = useState([]);
+   const messaging = firebase.messaging();
   var smsGroups = [];
   let history = useHistory();
   // setId(location.state.id);
 
   useEffect(() => {
+    //  messaging.requestPermission().then
+
+
     db.collection("sms-groups")
       .doc(id)
       .get()

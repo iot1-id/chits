@@ -230,20 +230,20 @@ export default function UserCurrentGroups() {
                               {data.interval === "Monthly" ? "months" : "weeks"}
                             </div>
                           </div>
-                          {data.status === "Active" && (
-                            <div class="table-row">
+                          {/* {data.status === "Active" && ( */}
+                            {/* <div class="table-row">
                               <div class="table-title">Remaining Period:</div>
-                              <div class="table-data">
+                              <div class="table-data"> */}
                                 {/* {console.log(
                                   moment(data.createdAt.toDate()).fromNow()
                                 )} */}
-                                todo
-                                {data.interval === "Monthly"
+                                {/* todo */}
+                                {/* {data.interval === "Monthly"
                                   ? "months"
-                                  : "weeks"}
-                              </div>
-                            </div>
-                          )}
+                                  : "weeks"} */}
+                              {/* </div> */}
+                            {/* </div> */}
+                          {/* )} */}
                           <div class="table-row">
                             <div class="table-title">Type:</div>
                             <div class="table-data">{data.type}</div>

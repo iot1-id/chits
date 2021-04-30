@@ -3,7 +3,7 @@ import Signup from "./Signup";
 import { Container } from "react-bootstrap";
 import { AuthProvider } from "../contexts/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Dashboard from "./Dashboard";
+// import Dashboard from "./Dashboard";
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
@@ -13,45 +13,46 @@ import userPage from "./UserPage/userPage";
 import JoinConf from "./UserPage/joinConf";
 import CurrentGroups from "./AdminPage/currentGroups";
 import UserCurrentGroups from "./UserPage/userCurrentGroups";
-import firebase from "firebase";
+// import firebase from "firebase";
 import { auth, db } from "../firebase";
-import { CodeOutlined } from "@material-ui/icons";
+// import { CodeOutlined } from "@material-ui/icons";
 import GroupConf from "./AdminPage/groupConf";
 
 function App() {
 
-  const [userType, setUserType] = useState("user");
+  const [userType, setUserType] = useState("");
   const [id, setId] = useState("");
+  
 
-
-  const getUserType = async () => {
-    await db
-      .collection("users")
-      .doc(auth.currentUser.uid)
-      .get()
-      .then((result) => {
-        // console.log(result.data().type);
-        setUserType(result.data().type);
-      });
+  let data;
+  const getUserType = async (i) => {
+     await db.collection("users")
+         .doc(i)
+         .get()
+         .then((result) => {
+           return  result.data().type
+            // setUserType(result.data().type);
+          
+         });
+     
   };
 
-  useEffect(() => {
-    getUserType();
-    // if (auth !== undefined){
-    //   // setId(auth.currentUser.uid)
-    //   // console.log(id);
-    //   // db.collection("users")
-    //   //   .doc(id)
-    //   //   .get()
-    //   //   .then((result) => {
-    //   //     // console.log(result.data().type);
-    //   //     setUserType(result.data().type);
-    //   //   });
-    // }
+  useEffect( () => {
+
+   const unsuscribe =  auth.onAuthStateChanged(function  (user) {
+     
+     if  (user.exists) {
+       console.log("walkfnjefeikfkfh")
+        setUserType(getUserType(user.uid))
+
+     };
+   return unsuscribe;
    
-  }, []);
+  })}, []);
+
   
-  console.log(id)
+  
+  // console.log(id)
   return (
     <Router>
       <AuthProvider>
@@ -64,6 +65,8 @@ function App() {
           )}
 
           {/* <Route exact path="/user" component={userPage} /> */}
+          <PrivateRoute exact path="/user" component={userPage} />
+          <PrivateRoute exact path="/admin" component={adminPage} />
           <Route exact path="/userconf" component={JoinConf} />
           <Route exact path="/current" component={CurrentGroups} />
           <Route exact path="/usercurrent" component={UserCurrentGroups} />

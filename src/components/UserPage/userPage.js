@@ -21,7 +21,7 @@ export default function UserPage() {
 
   // };
 
-  console.log(auth);
+  // console.log(auth);
   return (
     <div style={{ backgroundImage: `url(${bg})`, height: "100vh" }}>
       <nav>

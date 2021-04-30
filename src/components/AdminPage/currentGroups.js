@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 import { Row, Col, Modal, ModalBody } from "reactstrap";
 import NavBar from "../NavBar";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -12,6 +13,9 @@ import bg from "../../assets/bg4.jpg";
 import { auth, db } from "../../firebase";
 import { IconButton } from "@material-ui/core";
 import { Edit } from "@material-ui/icons";
+import SimpleModal from "../../ui/modal";
+import moment from "moment";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -108,54 +112,34 @@ export default function CurrentGroups() {
                       <div class="table-row">
                         <div class="table-title">Group Name</div>
                         <div class="table-data">
-                          {data.groupName ? data.groupName : i + 1}
+                          {/* {data.groupName ? data.groupName : i + 1} */}
                           {/* {console.log(data.refId)} */}
 
-                          <IconButton onClick={() => setToggle(true)}>
+                          {/* <IconButton onClick={() => setToggle(true)}>
                             <Edit fontSize="small" />
-                          </IconButton>
-                          <Modal
-                            isOpen={toggle}
-                            toggle={() => setToggle(false)}
-                          >
-                            <div className="modal-header justify-content-center">
+                          </IconButton> */}
+                          {/* <SimpleModal /> */}
+                          {/* { toggle &&<SimpleModal/> } */}
+                          <Row>
+                            <Col>
+                              <Form.Control
+                                type="text"
+                                placeholder={data.groupName}
+                                onChange={(e) => setGroupName(e.target.value)}
+                                style={{ maxWidth: "80%" }}
+                              />
+                              {/* {bid} */}
+                            </Col>
+                            <Col>
                               <button
-                                className="close"
-                                type="button"
-                                onClick={() => setToggle(false)}
+                                className="btn-grad3"
+                                onClick={() => changeName(data.refId)}
+                                // {{data.Bid > bid ? onClick={bidding} : onClick={ setError("Cannot bid higher than the current bid") }}}
                               >
-                                {/* <i className="now-ui-icons ui-1_simple-remove"></i> */}
+                                Change
                               </button>
-                              <h4 className="title">Change Group Name</h4>
-                            </div>
-                            <ModalBody>
-                              <Row>
-                                <Col>
-                                  <h3>Enter Name: </h3>
-                                </Col>
-                                <Col>
-                                  <Form.Control
-                                    type="text"
-                                    placeholder="New Name"
-                                    onChange={(e) =>
-                                      setGroupName(e.target.value)
-                                    }
-                                    style={{ maxWidth: "80%" }}
-                                  />
-                                  {/* {console.log(groupName)} */}
-                                </Col>
-                              </Row>
-                              <Row>
-                                <button
-                                  className="btn-grad3"
-                                  // onClick={() => changeName(smsList)}
-                                >
-                                  Change Group Name
-                                </button>
-                                {i}
-                              </Row>
-                            </ModalBody>
-                          </Modal>
+                            </Col>
+                          </Row>
                         </div>
                       </div>
                       <div class="table-row">
@@ -166,19 +150,17 @@ export default function CurrentGroups() {
                         </div>
                       </div>
                       {data.status === "Active" ? (
-                        data.interval === "Monthly" ? (
-                          <div class="table-row">
-                            <div class="table-title">Months Done</div>
-                            <div class="table-data">{time}</div>
+                        <div class="table-row">
+                          <div class="table-title">Group Started:</div>
+                          <div class="table-data">
+                            {moment(data.createdAt.toDate()).fromNow()}
                           </div>
-                        ) : (
-                          <div class="table-row">
-                            <div class="table-title">Weeks Done</div>
-                            <div class="table-data">{time}</div>
-                          </div>
-                        )
+                        </div>
                       ) : (
-                        ""
+                        <div class="table-row">
+                          <div class="table-title">Status:</div>
+                          <div class="table-data">Inactive</div>
+                        </div>
                       )}
                       <div class="table-row">
                         <div class="table-title">Members</div>

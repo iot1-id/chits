@@ -1,32 +1,53 @@
-import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
-import { useAuth } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
-import "../css/login.css"
+import React, { useRef, useState } from "react";
+import { Form, Button, Card, Alert } from "react-bootstrap";
+import { useAuth } from "../contexts/AuthContext";
+import { Link, useHistory } from "react-router-dom";
+import "../css/login.css";
 import bg from "../assets/bg4.jpg";
-
+import { db } from "../firebase";
 
 export default function Login() {
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const { login } = useAuth()
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const history = useHistory()
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const { login } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
-      setError("")
-      setLoading(true)
+      setError("");
+      setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value)
       history.push("/")
+      // .then(
+      //   (result) => {
+      //     db.collection("users")
+      //       .doc(result.user.uid)
+      //       .get()
+      //       .then( (data) => {
+      //         if (data.data().type === "admin")
+      //           history.push("/admin");
+      //           else
+      //           history.push("/user");
+      //         // console.log(data.data().type)
+      //       });
+      //     // console.log(result.user.uid)
+      //   }
+      // );
+      // auth.onAuthStateChanged(function  (user) {
+      //   if (user){
+      //     console.log(user.uid)
+      //   }
+      // }
+      // history.push("/", { params: user });
     } catch {
-      setError("Failed to log in")
+      setError("Failed to log in");
     }
 
-    setLoading(false)
+    setLoading(false);
   }
 
   return (

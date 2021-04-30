@@ -1,0 +1,54 @@
+[debug] [2021-04-29T17:05:47.018Z] ----------------------------------------------------------------------
+[debug] [2021-04-29T17:05:47.019Z] Command:       C:\Program Files\nodejs\node.exe C:\work imbuedesk\chits\functions\node_modules\firebase-tools\lib\bin\firebase.js functions:shell
+[debug] [2021-04-29T17:05:47.020Z] CLI Version:   9.10.0
+[debug] [2021-04-29T17:05:47.020Z] Platform:      win32
+[debug] [2021-04-29T17:05:47.020Z] Node Version:  v14.15.4
+[debug] [2021-04-29T17:05:47.021Z] Time:          Thu Apr 29 2021 22:35:47 GMT+0530 (India Standard Time)
+[debug] [2021-04-29T17:05:47.021Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-29T17:05:47.030Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-29T17:05:47.031Z] > authorizing via signed-in user (karmapluss.app@gmail.com)
+[debug] [2021-04-29T17:05:47.031Z] [iam] checking project accd-fa9dc for permissions ["firebase.projects.get"]
+[debug] [2021-04-29T17:05:47.033Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-04-29T17:05:47.033Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-04-29T17:05:47.569Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","date":"Thu, 29 Apr 2021 17:05:48 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-29T17:05:47.585Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/accd-fa9dc:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2021-04-29T17:05:49.493Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 29 Apr 2021 17:05:50 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1307","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] !  Your requested "node" version "12" doesn't match your global version "14" {"metadata":{"emulator":{"name":"functions"},"message":"Your requested \"node\" version \"12\" doesn't match your global version \"14\""}}
+[debug] [2021-04-29T17:05:49.534Z] defaultcredentials: writing to file C:\Users\Shubham\AppData\Roaming\firebase\karmapluss_app_gmail.com_application_default_credentials.json
+[debug] [2021-04-29T17:05:49.535Z] DEBUG: Setting GAC to C:\Users\Shubham\AppData\Roaming\firebase\karmapluss_app_gmail.com_application_default_credentials.json
+[debug] [2021-04-29T17:05:49.537Z] > refreshing access token with scopes: []
+[debug] [2021-04-29T17:05:49.537Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-04-29T17:05:49.947Z] <<< HTTP RESPONSE 200 {"date":"Thu, 29 Apr 2021 17:05:50 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-29T17:05:49.958Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/accd-fa9dc/adminSdkConfig [none]
+[debug] [2021-04-29T17:05:50.883Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/accd-fa9dc/adminSdkConfig 200
+[debug] [2021-04-29T17:05:50.883Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/accd-fa9dc/adminSdkConfig {"projectId":"accd-fa9dc","databaseURL":"https://accd-fa9dc-default-rtdb.firebaseio.com","storageBucket":"accd-fa9dc.appspot.com","locationId":"asia-southeast2"}
+[debug] [2021-04-29T17:05:50.898Z] [functions] Watching "C:\work imbuedesk\chits\functions" for Cloud Functions...
+[debug] [2021-04-29T17:05:50.917Z] DEBUG: [worker-pool] addWorker(~diagnostic~)
+[debug] [2021-04-29T17:05:50.917Z] DEBUG: [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2021-04-29T17:05:50.918Z] DEBUG: [worker-pool] submitWork(triggerId=)
+[debug] [2021-04-29T17:05:50.918Z] DEBUG: [worker-~diagnostic~-4a0ec817-25ce-46e2-8b67-7e527412db40]: Assigning socketPath: \\?\pipe\C:\work imbuedesk\chits\functions\15528
+[debug] [2021-04-29T17:05:50.918Z] DEBUG: [worker-~diagnostic~-4a0ec817-25ce-46e2-8b67-7e527412db40]: BUSY
+[debug] [2021-04-29T17:05:51.157Z] DEBUG: [runtime-status] [15528] Functions runtime initialized. {"cwd":"C:\\work imbuedesk\\chits\\functions","node_version":"14.15.4"}
+[debug] [2021-04-29T17:05:51.159Z] DEBUG: [runtime-status] [15528] Disabled runtime features: undefined
+[debug] [2021-04-29T17:05:51.162Z] DEBUG: [runtime-status] [15528] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.7.0","resolution":"C:\\work imbuedesk\\chits\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2021-04-29T17:05:51.164Z] DEBUG: [runtime-status] [15528] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.2","resolution":"C:\\work imbuedesk\\chits\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2021-04-29T17:05:51.165Z] DEBUG: [runtime-status] [15528] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.2","resolution":"C:\\work imbuedesk\\chits\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2021-04-29T17:05:51.167Z] DEBUG: [runtime-status] [15528] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}]
+[debug] [2021-04-29T17:05:51.167Z] DEBUG: [runtime-status] [15528] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.2","resolution":"C:\\work imbuedesk\\chits\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2021-04-29T17:05:51.224Z] DEBUG: [runtime-status] [15528] Checked functions.config() {"config":{}}
+[debug] [2021-04-29T17:05:51.224Z] DEBUG: [runtime-status] [15528] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.13.2","resolution":"C:\\work imbuedesk\\chits\\functions\\node_modules\\firebase-functions\\lib\\index.js"}}
+[debug] [2021-04-29T17:05:51.224Z] DEBUG: [runtime-status] [15528] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.2","resolution":"C:\\work imbuedesk\\chits\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2021-04-29T17:05:51.225Z] DEBUG: [runtime-status] [15528] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.7.0","resolution":"C:\\work imbuedesk\\chits\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2021-04-29T17:05:51.226Z] DEBUG: [runtime-status] [15528] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.2","resolution":"C:\\work imbuedesk\\chits\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2021-04-29T17:05:51.226Z] DEBUG: [runtime-status] [15528] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"9.7.0","resolution":"C:\\work imbuedesk\\chits\\functions\\node_modules\\firebase-admin\\lib\\index.js"}}
+[debug] [2021-04-29T17:05:51.229Z] [functions[createSmsGroups]] function ignored because the firestore emulator does not exist or is not running.
+[info] i  functions: Loaded functions: createSmsGroups 
+[warn] !  functions: The following emulators are not running, calls to these services will affect production: firestore, database, pubsub, storage 
+[debug] [2021-04-29T17:05:51.247Z] DEBUG: [worker-~diagnostic~-4a0ec817-25ce-46e2-8b67-7e527412db40]: IDLE
+[debug] [2021-04-29T17:08:35.663Z] [functions] Stopping Functions Emulator
+[debug] [2021-04-29T17:08:35.670Z] DEBUG: [worker-~diagnostic~-4a0ec817-25ce-46e2-8b67-7e527412db40]: exited
+[debug] [2021-04-29T17:08:35.670Z] DEBUG: [worker-~diagnostic~-4a0ec817-25ce-46e2-8b67-7e527412db40]: FINISHED
